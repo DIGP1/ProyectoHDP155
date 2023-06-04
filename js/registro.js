@@ -17,6 +17,7 @@ registro.addEventListener('submit', (e) => {
        e.preventDefault();
 
        const name = document.querySelector("[data-name]").value;
+       const user = document.querySelector("[data-user]").value;
        const email = document.querySelector("[data-correo]").value;
        const password = document.querySelector("[data-contra]").value;
 
@@ -74,10 +75,10 @@ registro.addEventListener('submit', (e) => {
               displayError(errorPassword, 'La contraseña debe contener al menos un símbolo.');
               return;
        }
-
-       usuarios.push({name:name, email:email, password:password});
+       
+       usuarios.push({ id:uuid.v4(), name:name, user:user, email:email, password:password});
        localStorage.setItem('users', JSON.stringify(usuarios));
        alert('Usuario registrado con exito.')
 
-      window.location.href = 'index.html';
+       window.location.href = 'InicioSesion.html';
 });
