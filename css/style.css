@@ -25,7 +25,7 @@
 }
 
 .side-image{
-    background-image: url("/ProyectoHDP155/img/SAN-SALVADOR-Departamentos-de-El-Salvador.jpg");
+    background-image: url("../img/SAN-SALVADOR-Departamentos-de-El-Salvador.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
