@@ -16,21 +16,21 @@ function displayError(element, message) {
 registro.addEventListener('submit', (e) => {
        e.preventDefault();
 
-       const name = document.querySelector("[data-name]").value;
-       const user = document.querySelector("[data-user]").value;
-       const email = document.querySelector("[data-correo]").value;
-       const password = document.querySelector("[data-contra]").value;
+       const nombreIngresado = document.querySelector("[data-name]").value;
+       const usuarioIngresado = document.querySelector("[data-user]").value;
+       const emailIngresado = document.querySelector("[data-correo]").value;
+       const contraseniaIngresada = document.querySelector("[data-contra]").value;
 
        // Validar campos vacíos
-       if (name.trim() === '') {
+       if (nombreIngresado.trim() === '') {
               displayError(errorUser, 'Por favor, ingresa un nombre.');
               return;
        }
-       if (email.trim() === '') {
+       if (emailIngresado.trim() === '') {
               displayError(errorEmail, 'Por favor, ingresa un correo electrónico.');
               return;
        }
-       if (password.trim() === '') {
+       if (contraseniaIngresada.trim() === '') {
               displayError(errorPassword, 'Por favor, ingresa una contraseña.');
               return;
        }
@@ -38,45 +38,36 @@ registro.addEventListener('submit', (e) => {
        const usuarios = JSON.parse(localStorage.getItem('users')) || [];
        
        // comprobar si existe repeticion
-       const nameRegistrared = usuarios.find(user => user.name === name);
-       const emailRegistrared = usuarios.find(user => user.email === email);
-       const passwordRegistrared = usuarios.find(user => user.password === password);
+       const nameRegistrared = usuarios.find(user => user.user === usuarioIngresado);
+       const emailRegistrared = usuarios.find(user => user.email === emailIngresado);
 
        // Validar contraseña
-       const minimumCharacters = password.length >= 8;
-       const hasNoSpaces = !/\s/.test(password);
-       const hasSymbol = /[!@#$%^&*]/.test(password);
+       const minimoDeCaracteres = contraseniaIngresada.length >= 8;
+       const noTieneEspacios = !/\s/.test(contraseniaIngresada);
+       const tieneSimbolos = /^(?=.*[!@#$%^&*()\-_=+{};:,<.>])/.test(contraseniaIngresada);
        
-       if (usuarios.some(user => user.name === name && user.email === email && user.password === password)) {
-              displayError(errorPassword, 'Todos los campos coinciden con un usuario existente.');
-              return;
-       } 
        if (nameRegistrared) {
-              displayError(errorUser, 'El nombre ya está registrado.');
+              displayError(errorUser, 'El nombre de usuario ya está registrado.');
               return;
        } 
        if (emailRegistrared) {
               displayError(errorEmail, 'El correo ya está registrado.');
               return;
        }
-       if (passwordRegistrared) {
-              displayError(errorPassword, 'La contraseña ya está registrada.');
-              return;
-       }
-       if (!minimumCharacters) {
+       if (!minimoDeCaracteres) {
               displayError(errorPassword, 'La contraseña debe tener al menos 8 caracteres.');
               return;
        }
-       if (!hasNoSpaces) {
+       if (!noTieneEspacios) {
               displayError(errorPassword, 'La contraseña no debe contener espacios.');
               return;
        }
-       if (!hasSymbol) {
+       if (!tieneSimbolos) {
               displayError(errorPassword, 'La contraseña debe contener al menos un símbolo.');
               return;
        }
        
-       usuarios.push({ id:uuid.v4(), name:name, user:user, email:email, password:password});
+       usuarios.push({ id:uuid.v4(), name:nombreIngresado, user:usuarioIngresado, email:emailIngresado, password:contraseniaIngresada});
        localStorage.setItem('users', JSON.stringify(usuarios));
        alert('Usuario registrado con exito.')
 
