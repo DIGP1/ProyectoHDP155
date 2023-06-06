@@ -13,6 +13,12 @@ function displayError(element, message) {
        element.appendChild(createP);
 }
 
+//Valida el correo
+const validarEmail = (email) => {
+	var expresionRegular = /^([a-zA-Z0-9._-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,6})$/;
+	return expresionRegular.test(email);
+};
+
 registro.addEventListener('submit', (e) => {
        e.preventDefault();
 
@@ -29,6 +35,12 @@ registro.addEventListener('submit', (e) => {
        if (emailIngresado.trim() === '') {
               displayError(errorEmail, 'Por favor, ingresa un correo electrónico.');
               return;
+       } else {
+              //Validación de correo a través de expresión regular
+              if (!validarEmail(emailIngresado)) {
+                     displayError(errorEmail, 'Por favor, ingrese un correo válido');
+                     return;
+              }
        }
        if (contraseniaIngresada.trim() === '') {
               displayError(errorPassword, 'Por favor, ingresa una contraseña.');
