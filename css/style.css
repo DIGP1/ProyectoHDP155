@@ -9,6 +9,12 @@
     padding: 0 20px 0 20px;
 }
 
+
+/* .container{
+ border: 2px solid black;
+ 
+
+} */
 .main{
     display: flex;
     justify-content: center;
@@ -16,7 +22,7 @@
     min-height: 100vh;
 }
 
-.row{
+.row_{
     width: 900px;
     height: 700px;
     border-radius: 10px;
@@ -40,7 +46,7 @@ img{
     left: 30px;
 }
 
-.text{
+.text-s{
     position: absolute;
     top: 50%;
     left: 50%;
