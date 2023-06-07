@@ -1,9 +1,9 @@
 const user = JSON.parse(localStorage.getItem('login_success')) || false;
 
 //esta linea se comento para poder editar el html del blog, sino se deberia estar registrado si o si
-// if(!user){
-//     window.location.href = 'InicioSesion.html';
-// }
+ if(!user){
+     window.location.href = 'InicioSesion.html';
+}
 
 const logout = document.querySelector('#logout');
 
