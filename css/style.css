@@ -9,6 +9,9 @@
     padding: 0 20px 0 20px;
 }
 
+.colorPrincipal{
+    background-color: #5186f8;
+}
 
 /* .container{
  border: 2px solid black;
@@ -175,7 +178,7 @@ span a:hover{
         font-size: 17px;
     }
 
-    .row{
+    .row_{
         max-width: 420px;
         width: 100%;
     }
