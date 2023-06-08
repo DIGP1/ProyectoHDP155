@@ -46,14 +46,14 @@ img{
     left: 30px;
 }
 
-.text-s{
+.txt{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.text p{
+.txt p{
     color: #fff;
     font-size: 18px;
 }
@@ -165,13 +165,13 @@ span a:hover{
         left: 47%;
     }
 
-    .text{
+    .txt{
         position: absolute;
         top: 62%;
         text-align: center;
     }
 
-    .text p,i{
+    .txt p,i{
         font-size: 17px;
     }
 
