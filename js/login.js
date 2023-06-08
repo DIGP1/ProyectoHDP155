@@ -1,5 +1,5 @@
 const login = document.querySelector("[data-login]");
-
+const mt = document.querySelector("[data-usu]");
 login.addEventListener('submit', (e)=>{
   e.preventDefault();
 
