@@ -8,9 +8,16 @@
     background: -webkit-linear-gradient(rgb(65, 65, 64), rgb(28, 47, 104));
     padding: 0 20px 0 20px;
 }
-
+.banner{
+    background-image: url("../img/SAN-SALVADOR-Departamentos-de-El-Salvador.jpg");
+    background-size: cover;
+    min-height: 100vh;
+}
+.colorDegradado{
+    background: -webkit-linear-gradient(rgb(65, 65, 64), rgb(28, 47, 104));
+}
 .colorPrincipal{
-    background-color: #5186f8;
+    background-color: #4974d1;
 }
 
 /* .container{
