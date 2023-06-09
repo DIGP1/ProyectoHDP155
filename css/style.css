@@ -9,7 +9,7 @@
     padding: 0 20px 0 20px;
 }
 .banner{
-    background-image: url("../img/SAN-SALVADOR-Departamentos-de-El-Salvador.jpg");
+    background-image: url("../img/fondo.jpg");
     background-size: cover;
     min-height: 100vh;
 }
