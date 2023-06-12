@@ -36,7 +36,7 @@ const nav = `
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                    <a class="dropdown-item" href="#">Mi perfil</a>
+                    <a class="dropdown-item" href="usuarios.html">Mi perfil</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="#">Mis publicaciones</a>
