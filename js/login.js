@@ -10,6 +10,10 @@ login.addEventListener('submit', (e)=>{
   console.log(usuarios);
   //buscamos los datos
   const validarusuario = usuarios.find(user => (user.user === usuario && user.password === password));
+
+  
+
+
   //const validateUser = usuarios.some(user => user.usuario != usuario && user.password != password)
   // console.log(validateUser);
   // if (validateUser){
@@ -21,11 +25,30 @@ login.addEventListener('submit', (e)=>{
   // }
 
   if(!validarusuario){
-    alert('Usuario y/o contraseña incorrectos!')
+    alert('Usuario y/o contraseña incorrectos!');
   } else{
-    alert(`Bienvenido ${validarusuario.name}`)
-    localStorage.setItem('login_success', JSON.stringify(validarusuario))
-    window.location.href = 'Blog.html'   
-  }
+    alert(`Bienvenido ${validarusuario.name}`);
+    localStorage.setItem('login_success', JSON.stringify(validarusuario));
+
+    
+ 
+
+    window.location.href = 'Blog.html' 
+    
+    
+  //   const usuarios = JSON.parse(localStorage.getItem('users')) || [];
+  //   const mu = document.querySelector("[dt]");
+  //       listaUsuariosElement.innerHTML = ''; 
+    
+      
+  //       usuarios.forEach((usuario) => {
+  //         const listItem = document.createElement('li');
+  //         listItem.textContent = ` Usuario: ${usuario.user}`;
+  //         mu.appendChild(listItem);
+  //       });
+  // }
+  
+  
 
 });
+

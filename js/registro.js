@@ -81,7 +81,10 @@ registro.addEventListener('submit', (e) => {
        
        usuarios.push({ id:uuid.v4(), name:nombreIngresado, user:usuarioIngresado, email:emailIngresado, password:contraseniaIngresada});
        localStorage.setItem('users', JSON.stringify(usuarios));
-       alert('Usuario registrado con exito.')
+       alert('Usuario registrado con exito.');
+
+      
+
 
        window.location.href = 'InicioSesion.html';
 });
