@@ -49,12 +49,12 @@
     border-radius: 10px 0 0 10px;
 }
 
-img{
+/* img{
     width: 35px;
     position: absolute;
     top: 30px;
     left: 30px;
-}
+} */
 
 .txt{
     position: absolute;
@@ -168,12 +168,12 @@ span a:hover{
         height: 100px;
     }
 
-    img{
+    /* img{
         width: 35px;
         position: absolute;
         top: 20px;
         left: 47%;
-    }
+    } */
 
     .txt{
         position: absolute;
