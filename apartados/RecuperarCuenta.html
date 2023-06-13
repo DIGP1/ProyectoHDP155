@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <title>Recuperar Cuenta</title>
+</head>
+<body>
+    <div class="c_principal">
+        <div class="container main">
+
+            <div class="row row_">
+
+                <div class="col-md-6 side-image">
+                    <div class="txt">
+                        <p style="font-size: 40px;">Conociendo El Salvador</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 right">
+                    <div class="input-box">
+                        <header>RECUPERAR CUENTA</header>
+                        
+                        <form data-login>
+                            <div class="input-field">
+                                <input type="text" class="input" id="usu" required data-user>
+                                <label for="usu">Usuario</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" value="Recuperar" >
+                            </div>
+                        </form>
+
+                        <div class="help-get-password">
+                            <h6>Ayuda:</h6>
+                            <p>Con este proceso podrás recuperar tu contraseña de acceso a la plataforma. Para ellos deberás completar
+                                los pasos siguientes:
+                            </p>
+                            <ol>
+                                <li>Ingresar el usuario con el que estás registrado.</li>
+                                <li>El sistema te enviará un correo electrónico, conteniendo la contraseña de acceso.</li>
+                                <li>Al ingresar, deberás ir a tu perfil y cambiar tu contraseña [POR SEGURIDAD].</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="signin">
+                            <span>No tienes una cuenta? <a href="./registro.html">Registrate aqui</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("bxCcxL2mfBQH4fZSs");
+    })();
+</script>
+<script src="../js/recuperarCuenta.js" defer></script>
+</html>

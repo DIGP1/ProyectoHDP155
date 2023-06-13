@@ -171,6 +171,27 @@ span a:hover{
     color: #000;
 }
 
+.get-password {
+    text-decoration: none;
+    margin-left: 15px;
+    color: rgb(3, 75, 147);
+    font-size: 15px;
+}
+
+.get-password:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.help-get-password {
+    text-align: left;
+    font-size: small;
+    margin-top: 25px;
+}
+.help-get-password h6 {
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 768px){
     .side-image{
         border-radius: 10px 10px 0 0;
