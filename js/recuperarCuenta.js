@@ -36,5 +36,4 @@ recuperarCuenta.addEventListener('submit', (e)=>{
             }
         );
     }
-
 });
