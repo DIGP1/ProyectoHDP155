@@ -6,6 +6,18 @@ const cerrarsesion = () => {
     //      window.location.href = 'InicioSesion.html';
     // }
 
+    const mt = user.find(users => (users.users === usuario ));
+
+     const mu = document.querySelector("[dt]");
+		       listaUsuariosElement.innerHTML = ''; 
+		
+			
+		       user.forEach((usuario) => {
+		         const listItem = document.createElement('li');
+		        listItem.textContent = ` Usuario: ${mt.usuario}`;
+		       mu.appendChild(listItem);
+		      });
+
     const logout = document.querySelector('#logout');
     
     logout.addEventListener('click', ()=>{
