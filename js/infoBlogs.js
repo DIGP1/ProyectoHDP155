@@ -19,6 +19,9 @@ let banner = event.target.files[0];
 reader.readAsDataURL(banner);
 });
 
+tinymce.init({
+    selector: '#myTextarea'
+  });
 const btnG = document.querySelector("#btnGuardar");
 moment.locale("es");
 btnG.addEventListener("click", (e) => {
