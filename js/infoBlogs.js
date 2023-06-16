@@ -27,7 +27,7 @@ moment.locale("es");
 btnG.addEventListener("click", (e) => {
     e.preventDefault()
     titulo = document.getElementById("titulo").value;
-    cuerpo = document.getElementById("cuerpo").value;
+    cuerpo = tinymce.get('myTextarea').getContent();
     const fechaBlog =moment().format('DD/MM/YYYY HH:mm:ss');
 
     blogs = JSON.parse(localStorage.getItem("blogs")) || [];
