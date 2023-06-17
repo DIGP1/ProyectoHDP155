@@ -43,7 +43,7 @@ const cargarFooterNav = () => {
                         <a class="dropdown-item" href="#">Mis publicaciones</a>
                     </li>
                     <li>
-                        <button class="dropdown-item" id="logout">Salir</button > 
+                        <button class="dropdown-item" id="logout">Salir</button> 
                     </li>
                 </ul>
             </div>
