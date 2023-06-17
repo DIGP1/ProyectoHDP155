@@ -7,13 +7,21 @@ for (const i of imgPrueba) {
     cargarImg.style.width = "20%";
     divpadre.appendChild(cargarImg);
 }*/
-
-const infoBlogs = JSON.parse(localStorage.getItem('blogs'));
+moment.locale("es");
+const infoBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
 const cargaBlogs = document.querySelector("[loadBlogs]");
 
-for (const i of infoBlogs) {
+infoBlogs.sort((a, b) => {
+  const fechaA = moment(a.fecha, 'DD/MM/YYYY HH:mm:ss');
+  const fechaB = moment(b.fecha, 'DD/MM/YYYY HH:mm:ss');
+  return fechaB.diff(fechaA);
+});
+
+if(infoBlogs.length != 0){
+  for (const i of infoBlogs) {
     const fecha = moment(i.fecha, "DD/MM/YYYY HH:mm:ss");
     const fecharelativa = fecha.fromNow();
+    const textoAlerta = i.cuerpo.substring(0,200)+"...";
     const tarjetaBlog = `
     <div class="col-md-6 col-lg-4 mb-4">
       <div class="card h-100">
@@ -21,7 +29,7 @@ for (const i of infoBlogs) {
         <div class="card-body px-0 py-3">
           <h5 class="p-1 mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">${i.titulo}</h5>
           <h6 class="p-1 pt-1">
-            ${i.cuerpo}
+            ${textoAlerta}
           </h6>
         </div>
         <div class="card-footer">
@@ -33,7 +41,16 @@ for (const i of infoBlogs) {
     </div>
   `;
   cargaBlogs.innerHTML += tarjetaBlog;
+  }
 }
+else{
+  cargaBlogs.innerHTML = `
+  <div class="badge bg-secondary text-wrap fs-5" style="width: 100%; ">
+  No hay ningun blog disponible
+  </div>
+  `
+}
+
 
 
 
