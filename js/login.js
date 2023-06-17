@@ -26,8 +26,23 @@ login.addEventListener('submit', (e)=>{
     } else{
 		alert(`Bienvenido ${validarusuario.name}`);
 		localStorage.setItem('login_success', JSON.stringify(validarusuario));
+    window.location.href = '../apartados/Blog.html' ;
+//     const validacionadmin= usu.find(user => (user.user==="ADMIN"));
+//  if(!validacionadmin){
+//   alert("No hay ningun Administrador")
+//  }else{
+//   const pri= document.querySelector('[pri]');
+//   const btn= document.createElement('button');
 
-		window.location.href = '../apartados/Blog.html' 
+//   pri.appendChild(btn);
+
+
+//  }
+
+
+
+
+
 		
 		//   const usuarios = JSON.parse(localStorage.getItem('users')) || [];
 		//   const mu = document.querySelector("[dt]");
