@@ -40,6 +40,17 @@
     align-items: center;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button-container button {
+    margin: 0 10px;
+  }
+  
+
 .banner .mark h2 {
     font-size: calc(2rem + 3vw);
     font-family: 'Bree Serif', serif !important;

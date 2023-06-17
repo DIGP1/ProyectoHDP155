@@ -15,6 +15,7 @@
 <body>
     <div class="container_ mt-3 ">
         <form form-regi>
+            <img src="" alt="">
 
             <div class="input-field">
                 <label for="email">Nombre Completo</label> <input type="text" class="input" id="nombrecompleto" required >
@@ -32,10 +33,32 @@
                 
                 <label for="email">Correo</label><input type="text" class="input" id="correoelectronico" required >
             </div>
-            <div class="input-field">
+            <div class="input-field p-2">
                 
                 <label for="email">Contraseña</label><input type="text" class="input" id="contraseña" required >
+                <label class="">Mostrar Contraseña <input class="p-3" type="checkbox" id="mostrarContrasenaCheckbox"></label>
+                
             </div>
+            <div class="button-container">
+                <button type="button" class="btn btn-secondary">Editar</button>
+                <button type="button" class="btn btn-success">Guardar</button>
+            </div>
+            
+            <script>
+
+              const passwordInput = document.getElementById("contraseña");
+              passwordInput.type = 'password';
+              const mostrarContrasenaCheckbox = document.getElementById('mostrarContrasenaCheckbox');
+
+    mostrarContrasenaCheckbox.addEventListener('change', function(e)
+     {e.preventDefault();
+      if (mostrarContrasenaCheckbox.checked) {
+    passwordInput.type = 'text';
+     } else {
+    passwordInput.type = 'password';
+  }
+});
+</script>
     
     </div>
     
