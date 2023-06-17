@@ -30,6 +30,17 @@
 // export default cerrarsesion
 
 const cerrarsesion = () => {
+    
+  
+    const logout = document.querySelector("#logout");
+  
+    logout.addEventListener("click", () => {
+      alert("¡Hasta pronto!");
+      localStorage.removeItem("login_success");
+      window.location.href = "InicioSesion.html";
+    });
+
+
     const userLogin = JSON.parse(localStorage.getItem('login_success')) || false;
     const usuarios = JSON.parse(localStorage.getItem('users')) || false;
   
@@ -43,19 +54,11 @@ const cerrarsesion = () => {
     const nameInput = document.getElementById("nombrecompleto");
     const passwordInput = document.getElementById("contraseña");
     const usuarioInput = document.getElementById("usuarioo");
-  
+
     emailInput.value = email;
     nameInput.value = name;
     passwordInput.value = password;
     usuarioInput.value = user;
-  
-    const logout = document.querySelector("#logout");
-  
-    logout.addEventListener("click", () => {
-      alert("¡Hasta pronto!");
-      localStorage.removeItem("login_success");
-      window.location.href = "InicioSesion.html";
-    });
 };
   
 export default cerrarsesion;

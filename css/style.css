@@ -18,9 +18,38 @@
 
 }
 .banner{
-    background-image: url("../img/fondo.jpg");
+    background-image: url("../img/");
     background-size: cover;
-    min-height: 100vh;
+    height: 400px;
+    position: relative;
+}
+
+.banner .mark {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #00000070;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .mark h2 {
+    font-size: calc(2rem + 3vw);
+    font-family: 'Bree Serif', serif !important;
+    font-weight: bold;
+}
+
+.banner .mark p {
+    font-size: 1.25rem;
+    font-family: 'Bree Serif', serif !important;
+    word-wrap: break-word;
 }
 .colorDegradado{
     background: -webkit-linear-gradient(rgb(65, 65, 64), rgb(28, 47, 104));
