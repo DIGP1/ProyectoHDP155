@@ -17,14 +17,20 @@ infoBlogs.sort((a, b) => {
   return fechaB.diff(fechaA);
 });
 
-if(infoBlogs.length != 0){
+if (infoBlogs.length != 0) {
+  const elementosGenerados = []; // Array para almacenar los elementos generados
+
   for (const i of infoBlogs) {
     const fecha = moment(i.fecha, "DD/MM/YYYY HH:mm:ss");
     const fecharelativa = fecha.fromNow();
-    const textoAlerta = i.cuerpo.substring(0,200)+"...";
+    const textoAlerta = i.cuerpo.substring(0, 200) + "...";
+    let titu = i.titulo.substring(0, 5);
+    const numeroAleatorio = Math.floor(Math.random() * 10000);
+    titu = titu.replace(/\s/g, "") + numeroAleatorio.toString();
+
     const tarjetaBlog = `
     <div class="col-md-6 col-lg-4 mb-4">
-      <div class="card h-100">
+      <div class="card h-100" data-titu="${titu}">
         <div class="position-relative"><img class="w-100 rounded-top" src="${i.banner}"/></div>
         <div class="card-body px-0 py-3">
           <h5 class="p-1 mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">${i.titulo}</h5>
@@ -40,15 +46,27 @@ if(infoBlogs.length != 0){
       </div>
     </div>
   `;
-  cargaBlogs.innerHTML += tarjetaBlog;
+
+    cargaBlogs.insertAdjacentHTML("beforeend", tarjetaBlog);
+
+    const elementoGenerado = cargaBlogs.lastElementChild; // Obtener el último elemento generado
+    elementosGenerados.push(elementoGenerado); // Agregarlo al array
+
+    elementoGenerado.addEventListener("click", () => {
+      cargaBlogs.innerHTML = `
+      <h1> ${i.titulo}</h1>
+      <img src="${i.banner}"></img>
+      <p>${i.cuerpo}</p>
+      <span>Fecha de publicacion: ${i.fecha}</span>
+      `;
+    });
   }
-}
-else{
+} else {
   cargaBlogs.innerHTML = `
-  <div class="badge bg-secondary text-wrap fs-5" style="width: 100%; ">
+  <div class="badge bg-secondary text-wrap fs-5" style="width: 100%;">
   No hay ningun blog disponible
   </div>
-  `
+  `;
 }
 
 
