@@ -1,5 +1,19 @@
 const cargarFooterNav = () => {
     //Codigo html del nav
+    const userLogin = JSON.parse(localStorage.getItem('login_success')) || [];
+    let validaradmin = false;
+    if(userLogin.user == "ADMIN"){
+        validaradmin = true;
+    }
+    let li = "";
+    let ruta = "";
+   if(!validaradmin){
+    li= "Mi perfil";
+    ruta = "../apartados/usuarios.html"
+   }else{
+    li= "Administrar";
+    ruta = "../apartados/pruebaadmin.html"
+   }
     const nav = `
     <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container-fluid d-flex colorPrincipal" pri>
@@ -37,7 +51,7 @@ const cargarFooterNav = () => {
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" >
                     <li>
-                        <a id="data-pf" class="dropdown-item" href="usuarios.html">Mi perfil</a>
+                        <a id="data-pf" class="dropdown-item" href="${ruta}">${li}</a>
                     </li>
                     <li>
                         <button class="dropdown-item" id="logout">Salir</button> 
