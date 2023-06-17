@@ -32,6 +32,7 @@ btnG.addEventListener("click", (e) => {
 
     blogs = JSON.parse(localStorage.getItem("blogs")) || [];
     blogs.push({
+        idBlog: uuid.v4(),
         titulo: titulo,
         cuerpo: cuerpo,
         banner: direcbanner,
