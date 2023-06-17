@@ -1,4 +1,3 @@
-
 let bannerSubido = document.getElementById('banner');
 let direcbanner; 
 bannerSubido.addEventListener('change', function(event) {
@@ -24,6 +23,7 @@ tinymce.init({
     selector: '#myTextarea'
   });
 const btnG = document.querySelector("#btnGuardar");
+moment.locale("es");
 btnG.addEventListener("click", (e) => {
     e.preventDefault()
     titulo = document.getElementById("titulo").value;
