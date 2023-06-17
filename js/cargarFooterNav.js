@@ -2,7 +2,7 @@ const cargarFooterNav = () => {
     //Codigo html del nav
     const nav = `
     <nav class="navbar navbar-expand-lg navbar-dark ">
-        <div class="container-fluid d-flex colorPrincipal">
+        <div class="container-fluid d-flex colorPrincipal" pri>
         <a class="navbar-brand fs-3 " href="../apartados/Blog.html">Conociendo El Salvador</a>
             
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
