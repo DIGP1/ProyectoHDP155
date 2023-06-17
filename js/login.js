@@ -26,7 +26,7 @@ login.addEventListener('submit', (e)=>{
     } else{
 		alert(`Bienvenido ${validarusuario.name}`);
 		localStorage.setItem('login_success', JSON.stringify(validarusuario));
-
+    window.location.href = '../apartados/Blog.html' ;
 //     const validacionadmin= usu.find(user => (user.user==="ADMIN"));
 //  if(!validacionadmin){
 //   alert("No hay ningun Administrador")
@@ -35,7 +35,7 @@ login.addEventListener('submit', (e)=>{
 //   const btn= document.createElement('button');
 
 //   pri.appendChild(btn);
-//   window.location.href = '../apartados/Blog.html' 
+
 
 //  }
 
