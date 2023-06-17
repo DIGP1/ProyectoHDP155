@@ -19,4 +19,25 @@ const displayInfoUser = () => {
     usuarioInput.value = user;
 };
   
+// export const editar = () => {
+//   const usuarios = JSON.parse(localStorage.getItem('login_success')) || {};
+
+ 
+//   const emailInput = document.getElementById("correoelectronico").value;
+//   const nameInput = document.getElementById("nombrecompleto").value;
+//   const passwordInput = document.getElementById("contraseña").value;
+//   const usuarioInput = document.getElementById("usuarioo").value;
+
+
+//   usuarios.email = emailInput;
+//   usuarios.name = nameInput;
+//   usuarios.password = passwordInput;
+//   usuarios.user = usuarioInput;
+
+ 
+//   localStorage.setItem('login_success', JSON.stringify(usuarios));
+
+// };
+
+// document.getElementById('editarbtn').addEventListener('click', editar);
 export default displayInfoUser;
