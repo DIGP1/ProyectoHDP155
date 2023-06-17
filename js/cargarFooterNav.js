@@ -35,15 +35,14 @@ const cargarFooterNav = () => {
                 <a class="text-light dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-person-circle text-white fs-2"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end" >
                     <li>
-                        <a class="dropdown-item" href="usuarios.html">Mi perfil</a>
+                        <a id="data-pf" class="dropdown-item" href="usuarios.html">Mi perfil</a>
                     </li>
                     <li>
                         <button class="dropdown-item" id="logout">Salir</button> 
                     </li>
                 </ul>
-                <p id="info"></p>
             </div>
         </div>
     </nav>`
