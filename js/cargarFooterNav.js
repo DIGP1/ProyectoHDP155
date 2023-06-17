@@ -37,7 +37,7 @@ const cargarFooterNav = () => {
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" >
                     <li>
-                        <a id="data-pf" class="dropdown-item" href="usuarios.html">Mi perfil</a>
+                        <a data-pf class="dropdown-item" href="usuarios.html">Mi perfil</a >
                     </li>
                     <li>
                         <button class="dropdown-item" id="logout">Salir</button> 
