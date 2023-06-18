@@ -55,19 +55,13 @@ adminUser.addEventListener('click', (e) => {
 });
 
 
-// const usuarios = document.querySelector('[data-users]')
-// const post = document.querySelector('[data-post]')
-// const comentarios = document.querySelector('[data-comentarios]')
+const usuarios = document.querySelector('[data-users]')
+const post = document.querySelector('[data-post]')
+const comentarios = document.querySelector('[data-comentarios]')
 
-// const info= document.getElementById('contenedor')
+const info= document.getElementById('contenedor')
 
-// usuarios.addEventListener('click',()=>{
-   
-//    info.innerHTML=`    `
-// })
-// post.addEventListener('click',()=>{
-   
-// })
+
 comentarios.addEventListener('click',()=>{
    info.innerHTML = "";
    const comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
@@ -119,10 +113,11 @@ comentarios.addEventListener('click',()=>{
             No tienes comentarios a revisar
          </div>
          `;
+         console.log(comentariosBlog)
       }
      }
      
-    }
+   }
 })
 
 function ordenarPorFecha(arreglo){
