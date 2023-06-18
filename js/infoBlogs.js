@@ -41,4 +41,11 @@ btnG.addEventListener("click", (e) => {
     localStorage.setItem("blogs", JSON.stringify(blogs));
     alert("¡Se ha guardado el blog con éxito!");
 });
+
+const btnCancelar = document.querySelector("[btn-cancelar]");
+
+btnCancelar.addEventListener("click", (e)=>{
+    e.preventDefault();
+    window.location.href = '../apartados/Blog.html' ;
+});
   
