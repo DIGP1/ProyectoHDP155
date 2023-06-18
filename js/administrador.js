@@ -67,8 +67,10 @@ comentarios.addEventListener('click',()=>{
    const comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
    if(comentariosBlog.length != 0){
      ordenarPorFecha(comentariosBlog);
+     let bandera = null
      for (const j of comentariosBlog) {
       if(!j.mostrar){
+         bandera = 1
          const fechaComen = moment(j.fecha, "DD/MM/YYYY HH:mm:ss");
          const fecharelComentario = fechaComen.fromNow();
          let comentarioMostrado = `
@@ -107,16 +109,21 @@ comentarios.addEventListener('click',()=>{
             }
             
          })
-      }else{
+      }else if(bandera == null){
          info.innerHTML = `
          <div class="badge bg-secondary text-wrap fs-5" style="width: 100%;">
             No tienes comentarios a revisar
          </div>
          `;
-         console.log(comentariosBlog)
       }
      }
      
+   }else{
+      info.innerHTML = `
+      <div class="badge bg-secondary text-wrap fs-5" style="width: 100%;">
+         Aun no hay comentarios en los post!
+      </div>
+      `;
    }
 })
 
