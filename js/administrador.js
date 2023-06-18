@@ -110,6 +110,7 @@ const comentarios = document.querySelector('[data-comentarios]')
 adminPost.addEventListener('click', (e) => {
    e.preventDefault();
    const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+   
    info.innerHTML = '';
  
    if (blogs.length === 0) {
@@ -118,6 +119,10 @@ adminPost.addEventListener('click', (e) => {
       info.appendChild(messageDiv);
    } else {
       const cardsHTML = blogs.map(blog => `
+      <div>
+      <a href="../apartados/CrearBlog.html" class="btn btn-primary btn-lg active m-3" role="button" aria-pressed="true">Nuevo Post</a>
+      </div>
+
        <div class="col-md-4 mb-4">
          <div class="card text-center" style="max-width: 300px;">
            <img src="${blog.banner}" class="card-img-top mx-auto img-fluid" alt="Imagen del blog" style="max-height: 150px;">
@@ -131,6 +136,7 @@ adminPost.addEventListener('click', (e) => {
              <small class="text-muted">Fecha de publicación: ${blog.fecha}</small>
            </div>
          </div>
+         
        </div>
      `).join('');
  

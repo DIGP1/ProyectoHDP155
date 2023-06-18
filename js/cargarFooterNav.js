@@ -33,9 +33,6 @@ const cargarFooterNav = () => {
                             <a data-home class="nav-link active " aria-current="page" href="../apartados/Blog.html">Home</a>
                         </li>
                         <li class="nav-item">
-                        <a data-informacion class="nav-link" aria-current="page" href="../apartados/CrearBlog.html">Nuevo post</a>
-                        </li>
-                        <li class="nav-item">
                             <a data-acercaDe class="nav-link" aria-current="page" href="#">Acerca de</a>
                         </li>
                     </ul>
