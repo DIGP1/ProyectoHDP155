@@ -56,8 +56,51 @@ adminUser.addEventListener('click', (e) => {
 
 
 const usuarios = document.querySelector('[data-users]')
-const post = document.querySelector('[data-post]')
+const adminPost = document.querySelector('[data-post]')
 const comentarios = document.querySelector('[data-comentarios]')
+
+adminPost.addEventListener('click', (e) => {
+   e.preventDefault();
+ 
+   const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+   const userTableContainer = document.getElementById('userTableContainer');
+   userTableContainer.innerHTML = '';
+ 
+   if (blogs.length === 0) {
+      const messageDiv = document.createElement('div');
+      messageDiv.innerHTML = `<div class="alert alert-secondary">No hay blogs disponibles.</div>`;
+      userTableContainer.appendChild(messageDiv);
+   } else {
+      const cardsHTML = blogs.map(blog => `
+       <div class="col-md-4 mb-4">
+         <div class="card text-center" style="max-width: 300px;">
+           <img src="${blog.banner}" class="card-img-top mx-auto img-fluid" alt="Imagen del blog" style="max-height: 150px;">
+           <div class="card-body">
+             <h5 class="card-title">${blog.titulo}</h5>
+             <p class="card-text">${blog.cuerpo.substring(0, 200)}...</p>
+           </div>
+           <div class="card-footer">
+             <small class="text-muted">Autor</small>
+             <br>
+             <small class="text-muted">Fecha de publicación: ${blog.fecha}</small>
+           </div>
+         </div>
+       </div>
+     `).join('');
+ 
+     const rowDiv = document.createElement('div');
+     rowDiv.classList.add('row');
+     rowDiv.innerHTML = cardsHTML;
+ 
+     userTableContainer.appendChild(rowDiv);
+   }
+});
+
+
+
+
+
+
 
 const info= document.getElementById('contenedor')
 
