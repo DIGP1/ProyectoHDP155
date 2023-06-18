@@ -55,22 +55,22 @@ adminUser.addEventListener('click', (e) => {
 });
 
 
-const usuarios = document.querySelector('[data-users]')
-const post = document.querySelector('[data-post]')
-const comentarios = document.querySelector('[data-comentarios]')
+// const usuarios = document.querySelector('[data-users]')
+// const post = document.querySelector('[data-post]')
+// const comentarios = document.querySelector('[data-comentarios]')
 
-const info= document.getElementById('contenedor')
+// const info= document.getElementById('contenedor')
 
-usuarios.addEventListener('click',()=>{
+// usuarios.addEventListener('click',()=>{
    
-   info.innerHTML=`    `
-})
-post.addEventListener('click',()=>{
+//    info.innerHTML=`    `
+// })
+// post.addEventListener('click',()=>{
    
-})
-comentarios.addEventListener('click',()=>{
+// })
+// comentarios.addEventListener('click',()=>{
    
-})
+// })
 
 
 
