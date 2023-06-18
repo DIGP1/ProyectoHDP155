@@ -54,4 +54,24 @@ adminUser.addEventListener('click', (e) => {
    userTableContainer.appendChild(table);
 });
 
+
+const usuarios = document.querySelector('[data-users]')
+const post = document.querySelector('[data-post]')
+const comentarios = document.querySelector('[data-comentarios]')
+
+const info= document.getElementById('contenedor')
+
+usuarios.addEventListener('click',()=>{
+   
+   info.innerHTML=`    `
+})
+post.addEventListener('click',()=>{
+   
+})
+comentarios.addEventListener('click',()=>{
+   
+})
+
+
+
 // export default adminUser;
