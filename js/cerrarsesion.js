@@ -30,8 +30,8 @@
 // export default cerrarsesion
 
 const cerrarsesion = () => {
+
     
-  
     const logout = document.querySelector("#logout");
   
     logout.addEventListener("click", () => {
