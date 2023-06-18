@@ -17,6 +17,7 @@ if (infoBlogs.length != 0) {
   const elementosGenerados = []; // Array para almacenar los elementos generados
 
   for (const i of infoBlogs) {
+    const datauser = JSON.parse(localStorage.getItem("login_success"));
     const fecha = moment(i.fecha, "DD/MM/YYYY HH:mm:ss");
     const fecharelativa = fecha.fromNow();
     const textoAlerta = i.cuerpo.substring(0, 200) + "...";
@@ -77,10 +78,13 @@ if (infoBlogs.length != 0) {
         const fechaComentario =moment().format('DD/MM/YYYY HH:mm:ss');
         textComentario = document.getElementById("txtComentarios");
         comentarios = JSON.parse(localStorage.getItem("comentarios")) || [];
+
         comentarios.push({
         idBlog: i.idBlog,
+        user: datauser.user,
         cuerpo: textComentario.value,
-        fecha: fechaComentario
+        fecha: fechaComentario,
+        mostrar: false
         });
         localStorage.setItem("comentarios", JSON.stringify(comentarios));
         alert("¡Se ha comentado con éxito!");
@@ -91,19 +95,24 @@ if (infoBlogs.length != 0) {
       if(comentariosBlog.length != 0){
         ordenarPorFecha(comentariosBlog);
         for (const j of comentariosBlog) {
-          if(i.idBlog == j.idBlog){
+          if(i.idBlog == j.idBlog && j.mostrar){
             const cargarComentarios = document.getElementById("comentarios");
             const fechaComen = moment(j.fecha, "DD/MM/YYYY HH:mm:ss");
             const fecharelComentario = fechaComen.fromNow();
             cargarComentarios.innerHTML += `
-            <div class="container-fluid border border-2 rounded">
-            <div class="fs-6 text-light">${fecharelComentario}</div>
+            <div class="container-sm border border-2 rounded mt-3 mb-1">
+            <div class="fs-6 text-dark">${fecharelComentario}</div>
+            <div class="row">
+               <div class="col-auto">
+                  <i class="bi bi-person-circle text-ligth fs-3 "></i>
+               </div>
+               <div class="col-auto d-flex align-items-center">
+               <div class="fs-5 text-ligth">${j.user}</div>
+               </div>
+            </div>
               <div class="row">
-                <div class="col-auto">
-                  <i class="bi bi-person-circle text-dark fs-3 "></i>
-                </div>
                 <div class="col-6">
-                  <span class="text-wrap fs-4 text-light">${j.cuerpo}</span>
+                  <span class="text-wrap fs-4 text-ligth">${j.cuerpo}</span>
                 </div>
               </div>
             </div>
@@ -112,8 +121,6 @@ if (infoBlogs.length != 0) {
         }
         
       }
-
-
     });
 }
 } else {
