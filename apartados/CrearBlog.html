@@ -19,7 +19,7 @@
   <div class="container" style="max-width: 800px; background-color: #efe8cd; padding: 20px; margin-top: 50px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
     <h1 style="color: #343a40; font-weight: bold; text-align: center; margin-bottom: 30px;">Crear un blog</h1>
 
-    <form>
+    <form id="myForm">
         <div class="form-group">
             <label for="titulo" style="color: #343a40; font-weight: bold;">Título:</label>
             <input type="text" class="form-control" id="titulo">
@@ -37,9 +37,11 @@
         </div>
 
         <div class="form-group text-center">
-          <button type="submit" class="btn btn-primary" style="border-color: #007bff;">Guardar</button>
-          <button type="button" class="btn btn-success" style="border-color: #6c757d;">Cancelar</button>
+          <button type="submit" class="btn btn-primary validarBtnGuardar" style="border-color: #007bff;" id="btnGuardar">Guardar</button>
+          <button type="button" class="btn btn-success" style="border-color: #6c757d;" id="btn-cancelar">Cancelar</button>
       </div>
+
+      <label id="mensaje" style="display: none;"></label>
 
     </form>
 </div>
