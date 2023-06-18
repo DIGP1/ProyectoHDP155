@@ -19,13 +19,14 @@
 // }
 // export default admin;
 
+//mostrando los datos e eliminar
+
 const adminUser = document.querySelector('[data-users]');
 const userTableContainer = document.getElementById('userTableContainer');
 
 adminUser.addEventListener('click', (e) => {
-   
    e.preventDefault();
-   const users = JSON.parse(localStorage.getItem('users')) || false;
+   const users = JSON.parse(localStorage.getItem('users')) || [];
 
    const table = document.createElement('table');
    table.classList.add('table');
@@ -36,6 +37,9 @@ adminUser.addEventListener('click', (e) => {
          <th>Name</th>
          <th>Email</th>
          <th>Password</th>
+         <th>Seleccionar</th>
+         <th>Botones</th>
+         <th><button>Agregar Usuario</button></th>
       </tr>
       </thead>
       <tbody>
@@ -45,6 +49,11 @@ adminUser.addEventListener('click', (e) => {
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.password}</td>
+            <td><input type="checkbox" data-id="${user.id}"></td> 
+            <td>
+               <button class="btn-edit" data-id="${user.id}">Editar</button> 
+               <button class="btn-delete" data-id="${user.id}">Eliminar</button> 
+            </td>
          </tr>
       `).join('')}
       </tbody>
@@ -52,9 +61,67 @@ adminUser.addEventListener('click', (e) => {
 
    userTableContainer.innerHTML = '';
    userTableContainer.appendChild(table);
+
+   const check = document.querySelectorAll('input[type="checkbox"]');
+   const borrar = document.querySelectorAll('.btn-delete');
+  
+
+   check.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+         const userId = checkbox.getAttribute('data-id');
+         if (checkbox.checked) {
+            // Lógica para seleccionar el usuario con el ID correspondiente
+         } else {
+            // Lógica para deseleccionar el usuario con el ID correspondiente
+         }
+      });
+   });
+
+   borrar.forEach(button => {
+      button.addEventListener('click', () => {
+         const userId = button.getAttribute('data-id');
+         const actualizar = users.filter(user => user.id !== userId);
+         localStorage.setItem('users', JSON.stringify(actualizar));
+       
+         table.innerHTML = `
+            <thead>
+            <tr>
+               <th>User</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Password</th>
+               <th>Select</th>
+               <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            ${updatedUsers.map(user => `
+               <tr>
+                  <td>${user.user}</td>
+                  <td>${user.name}</td>
+                  <td>${user.email}</td>
+                  <td>${user.password}</td>
+                  <td><input type="checkbox" data-id="${user.id}"></td>
+                  <td>
+                     <button class="btn-edit" data-id="${user.id}">Editar</button>
+                     <button class="btn-delete" data-id="${user.id}">Eliminar</button>
+                  </td>
+               </tr>
+            `).join('')}
+            </tbody>
+         `;
+      });
+   });
+
 });
 
 
+
+
+
+
+
+//////////////////////////////////////////////////////////
 const usuarios = document.querySelector('[data-users]')
 const adminPost = document.querySelector('[data-post]')
 const comentarios = document.querySelector('[data-comentarios]')

@@ -12,7 +12,7 @@ const cargarFooterNav = () => {
     ruta = "../apartados/usuarios.html"
    }else{
     li= "Administrar";
-    ruta = "../apartados/pruebaadmin.html"
+    ruta = "../apartados/admin.html"
    }
     const nav = `
     <nav class="navbar navbar-expand-lg navbar-dark ">
