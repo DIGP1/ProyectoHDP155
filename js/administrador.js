@@ -64,7 +64,7 @@ const info= document.getElementById('contenedor')
 
 comentarios.addEventListener('click',()=>{
    info.innerHTML = "";
-   const comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
+   let comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
    if(comentariosBlog.length != 0){
      ordenarPorFecha(comentariosBlog);
      let bandera = null
@@ -97,18 +97,22 @@ comentarios.addEventListener('click',()=>{
          `;
          info.innerHTML += comentarioMostrado;
          //Eventos de aceptar comentario o eliminarlo
-         let btnAceptar = document.querySelector("[btnAceptar]");
-         let btnEliminar = document.querySelector("[btnQuitar]");
+         let btnAceptar = document.querySelectorAll("[btnAceptar]");
+         let btnEliminar = document.querySelectorAll("[btnQuitar]");
 
-         btnAceptar.addEventListener("click",()=>{
-            info.innerHTML ="";
-            j.mostrar = true;
-            localStorage.setItem('comentarios', JSON.stringify(comentariosBlog));
-            if(!j.mostrar){
-               info.innerHTML += comentarioMostrado;
-            }
-            
-         })
+         for (const l of btnAceptar) {
+            l.addEventListener("click",()=>{
+               info.innerHTML ="";
+               j.mostrar = true;
+               localStorage.setItem('comentarios', JSON.stringify(comentariosBlog));
+               if(!j.mostrar){
+                  comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
+                  info.innerHTML += comentarioMostrado;
+               }
+               
+            });
+         }
+         
       }else if(bandera == null){
          info.innerHTML = `
          <div class="badge bg-secondary text-wrap fs-5" style="width: 100%;">
