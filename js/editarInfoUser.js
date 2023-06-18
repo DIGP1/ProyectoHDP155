@@ -36,18 +36,42 @@ const editar = () => {
     diferente de -1, significa que se encontró el usuario y se procede a realizar la edición. Si el valor de usuarioIndex es -1, 
     indica que el usuario no se encontró en la lista y se muestra un mensaje de alerta correspondiente. */
     if (usuarioIndex !== -1) {
-      usuarios[usuarioIndex] = {
-        ...usuarios[usuarioIndex],
-        email: document.getElementById("correoelectronico").value,
-        name: document.getElementById("nombrecompleto").value,
-        password: document.getElementById("contraseña").value,
-        user: document.getElementById("usuarioo").value
-      };
+      if (usuarios[usuarioIndex].password !== document.getElementById("contraseña").value) {
+        var passwd = prompt('Para confirmar los cambios, introduce tu contraseña antigua:');
+        if (passwd === usuarios[usuarioIndex].password) {
+          usuarios[usuarioIndex] = {
+            ...usuarios[usuarioIndex],
+            email: document.getElementById("correoelectronico").value,
+            name: document.getElementById("nombrecompleto").value,
+            password: document.getElementById("contraseña").value,
+            user: document.getElementById("usuarioo").value
+          };
+          localStorage.setItem('users', JSON.stringify(usuarios));
+          localStorage.setItem('login_success', JSON.stringify(usuarios[usuarioIndex]));
   
-      localStorage.setItem('users', JSON.stringify(usuarios));
-      localStorage.setItem('login_success', JSON.stringify(usuarios[usuarioIndex]));
+          alert('Información de usuario actualizada correctamente.');
+        }else {
+          alert('Contraseña incorrecta, los cambios no serán aplicados.');
+        }
+      }else {
+        var passwd = prompt('Para confirmar los cambios, introduce tu contraseña:');
+        if (passwd === usuarios[usuarioIndex].password) {
+          usuarios[usuarioIndex] = {
+            ...usuarios[usuarioIndex],
+            email: document.getElementById("correoelectronico").value,
+            name: document.getElementById("nombrecompleto").value,
+            password: document.getElementById("contraseña").value,
+            user: document.getElementById("usuarioo").value
+          };
+          localStorage.setItem('users', JSON.stringify(usuarios));
+          localStorage.setItem('login_success', JSON.stringify(usuarios[usuarioIndex]));
   
-      alert('Información de usuario actualizada correctamente.');
+          alert('Información de usuario actualizada correctamente.');
+        }else {
+          alert('Contraseña incorrecta, los cambios no serán aplicados.');
+        }
+      }
+      
     } else {
       alert('No se encontró el usuario en la lista.');
     }
