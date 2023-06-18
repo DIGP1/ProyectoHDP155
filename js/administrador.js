@@ -243,8 +243,8 @@ adminPost.addEventListener('click', (e) => {
              <small class="text-muted">Fecha de publicación: ${blog.fecha}</small>
            </div>
          </div>
-         <button type="button" class="btn btn-primary m-3">Editar</button>
-         <button type="button" class="btn btn-danger m-3">Eliminar</button>
+         <button type="button" class="btn btn-primary m-3">Editar</button btn_editar>
+         < type="button" class="btn btn-danger m-3">Eliminar</ button btn_eliminar >
          
        </div>
      `).join('');
