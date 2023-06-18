@@ -66,6 +66,8 @@ adminUser.addEventListener('click', (e) => {
  
    info.innerHTML = '';
    info.appendChild(table);
+
+    assingUpdateEvent(users, info);
  
    assignDeleteEvent(users); // Asignar eventos click a los botones de eliminar
  
@@ -81,8 +83,11 @@ adminUser.addEventListener('click', (e) => {
      });
    });
  });
+
+ let formVisible = false;//Permite verificar si el formulario para editar es visible
  
  function assignDeleteEvent(users) {
+	formVisible = false;
    const borrar = document.querySelectorAll('.btn-delete');
    borrar.forEach((button) => {
      button.addEventListener('click', () => {
@@ -94,9 +99,111 @@ adminUser.addEventListener('click', (e) => {
    });
  }
  
- 
+ function assingUpdateEvent(users, container){
+	const editar = document.querySelectorAll('.btn-edit');
+   editar.forEach((button) => {
+     button.addEventListener('click', () => {
+       const userId = button.getAttribute('data-id');
+       let userEdit = users.filter((user) => user.id === userId); // Almacena el usuario que se va a editar
+	   if (!formVisible) {
+		mostrarFormulario(container);
+		formVisible = true;
+	   }
+	   mostrarDatos(userEdit[0]);
+	   const btnGuardar = document.querySelector('[data-editar-btn]');
+	   console.log("Elemento del btn recibido: ", btnGuardar)
 
+	   btnGuardar.addEventListener("click", () => {
+		const usuarios = JSON.parse(localStorage.getItem('users')) || false;
+		const usuarioIndex = usuarios.findIndex(
+			usuario =>
+			usuario.usuario === userEdit[0].usuario &&
+			usuario.email === userEdit[0].email &&
+			usuario.password === userEdit[0].password &&
+			usuario.name === userEdit[0].name
+		);
+		console.log("Ususario a editar: ", usuarios[usuarioIndex])
+		/* La condición if (usuarioIndex !== -1) verifica si se encontró el usuario en la lista. Si el valor de usuarioIndex es 
+		diferente de -1, significa que se encontró el usuario y se procede a realizar la edición. Si el valor de usuarioIndex es -1, 
+		indica que el usuario no se encontró en la lista y se muestra un mensaje de alerta correspondiente. */
+		if (usuarioIndex !== -1){
+			usuarios[usuarioIndex] = {
+				...usuarios[usuarioIndex],
+				email: document.getElementById("correoelectronico").value,
+				name: document.getElementById("nombrecompleto").value,
+				password: document.getElementById("contraseña").value,
+				user: document.getElementById("usuarioo").value
+			};
+			localStorage.setItem('users', JSON.stringify(usuarios));
+			localStorage.setItem('login_success', JSON.stringify(usuarios[usuarioIndex]));
+			alert('Información de usuario actualizada correctamente.');
 
+		}
+	   });
+     });
+   });
+ }
+
+function mostrarFormulario(container){
+	
+	const formEdit = document.createElement('form');
+	const divContainer = document.createElement('div');
+	formEdit.classList.add('container_');
+	formEdit.classList.add('mt-3');
+	formEdit.classList.add('mb-3');
+	divContainer.innerHTML = ``;
+	formEdit.innerHTML = `
+	<img src="" alt="">
+
+	<div class="input-field">
+		<label for="email">Nombre Completo</label> <input type="text" class="input" id="nombrecompleto" required >
+
+	</div>
+	
+	<div class="input-field">
+		
+		<label for="Usuario">Usuario</label><input type="text" class="input" id="usuarioo" required dt>
+	</div>
+
+	<p p-name></p>
+
+	<div class="input-field">
+		
+		<label for="email">Correo</label><input type="text" class="input" id="correoelectronico" required >
+	</div>
+	<div class="input-field p-2">
+		
+		<label for="email">Contraseña</label><input type="text" class="input" id="contraseña" required >
+		
+	</div>
+	<div class="button-container">
+		<button type="button" class="btn btn-success" id="editarbtn" data-editar-btn>Guardar</button>
+	</div>`;
+	divContainer.innerHTML = ``;
+	divContainer.appendChild(formEdit);
+	container.appendChild(divContainer);
+		
+ }
+
+ function mostrarDatos(userEditar){
+    const usuarios = JSON.parse(localStorage.getItem('users')) || false;
+  
+    const { email, name, password, user } = usuarios.find(
+      usuario =>
+        usuario.usuario === userEditar.usuario && usuario.email === userEditar.email 
+        && usuario.password === userEditar.password && usuario.name === userEditar.name
+    );
+    const emailInput = document.getElementById("correoelectronico");
+    const nameInput = document.getElementById("nombrecompleto");
+    const passwordInput = document.getElementById("contraseña");
+    const usuarioInput = document.getElementById("usuarioo");
+  
+    emailInput.value = email;
+    nameInput.value = name;
+    passwordInput.value = password;
+    usuarioInput.value = user;
+
+ }
 
 
 
