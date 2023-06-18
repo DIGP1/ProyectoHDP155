@@ -39,5 +39,6 @@ const displayInfoUser = () => {
 
 // };
 
-// document.getElementById('editarbtn').addEventListener('click', editar);
+// // document.getElementById('editarbtn').addEventListener('click', editar);
+
 export default displayInfoUser;
