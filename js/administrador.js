@@ -68,7 +68,7 @@ adminUser.addEventListener('click', (e) => {
 // post.addEventListener('click',()=>{
    
 // })
-// comentarios.addEventListener('click',()=>{
+comentarios.addEventListener('click',()=>{
    info.innerHTML = "";
    const comentariosBlog = JSON.parse(localStorage.getItem('comentarios')) || [];
    if(comentariosBlog.length != 0){
@@ -122,7 +122,7 @@ adminUser.addEventListener('click', (e) => {
       }
      }
      
-//    }
+    }
 })
 
 function ordenarPorFecha(arreglo){
