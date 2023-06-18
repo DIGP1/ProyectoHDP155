@@ -48,28 +48,23 @@ if (infoBlogs.length != 0) {
 
     elementoGenerado.addEventListener("click", () => {
       cargaBlogs.innerHTML = `
-      <h1> ${i.titulo}</h1>
-      <img src="${i.banner}"></img>
-      <p>${i.cuerpo}</p>
-      <span>Fecha de publicacion: ${i.fecha}</span>
-
-      <div class="mt-5 mb-5">
-      <label for="comentarios" class="form-label fs-4">Comentarios:</label>
-       <div class="row">
-        <div class="col-auto">
-          <i class="bi bi-person-circle text-dark fs-2"></i>
-        </div>
-        <div class="col-4">
-          <textarea class="form-control" id="txtComentarios"></textarea>
-        </div>
-        <div class="col-1 d-flex align-self-center">
-          <div class="btn btn-success " btnComentar>Comentar</div>
-        </div>
-       </div>
-       <div div class="mt-5 mb-5 container-fluid" id="comentarios">
+      <div class="container">
+            <div class="card mb-3">
+                <img src="${i.banner}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${i.titulo}</h5> 
+                <p class="card-text">${i.cuerpo}</p>
+                <p class="card-text"><small class="text-body-secondary">${i.fecha}</small></p>
+              </div>
+            </div>
+            <div class="input-group mt-3">
+              <button type="button" class="btn btn-success" id="button-addon1" btnComentar>Comentar</button>
+              <input type="text" class="form-control" id="txtComentarios" placeholder="Escriube un comentario..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+      </div>
+      <div div class="mb-4 container-fluid" id="comentarios">
       
-       </div
-    </div>
+      </div>
       `;
       //Creando el evento click del boton de comentar
       const btnComentar = document.querySelector("[btnComentar]");
@@ -100,20 +95,10 @@ if (infoBlogs.length != 0) {
             const fechaComen = moment(j.fecha, "DD/MM/YYYY HH:mm:ss");
             const fecharelComentario = fechaComen.fromNow();
             cargarComentarios.innerHTML += `
-            <div class="container-sm border border-2 rounded mt-3 mb-1">
-            <div class="fs-6 text-dark">${fecharelComentario}</div>
-            <div class="row">
-               <div class="col-auto">
-                  <i class="bi bi-person-circle text-ligth fs-3 "></i>
-               </div>
-               <div class="col-auto d-flex align-items-center">
-               <div class="fs-5 text-ligth">${j.user}</div>
-               </div>
-            </div>
-              <div class="row">
-                <div class="col-6">
-                  <span class="text-wrap fs-4 text-ligth">${j.cuerpo}</span>
-                </div>
+            <div class="card mt-3">
+              <div class="card-body">
+                <p class="card-text">${j.cuerpo}</p>
+                <p class="card-text"><small class="text-body-secondary">${fecharelComentario}</small></p>
               </div>
             </div>
             `;
