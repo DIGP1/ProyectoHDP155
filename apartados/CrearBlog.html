@@ -16,31 +16,33 @@
 
 
 <body>
-  <div class="container">
-    <h1>Crear un blog</h1>
-    
-    <form>
-      <div class="mb-3">
-        <label for="titulo" class="form-label">Título:</label>
-        <input type="text" class="form-control" id="titulo">
-      </div>
-      
-      <div class="mb-3">
-        <label for="banner" class="form-label">Banner:</label>
-        <input type="file" id="banner" class="form-control" accept="image/*">
-        <img id="verBanner" src="#" alt="Vista previa de la imagen" class="mt-3" style="display: none;">
+  <div class="container" style="max-width: 800px; background-color: #efe8cd; padding: 20px; margin-top: 50px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="color: #343a40; font-weight: bold; text-align: center; margin-bottom: 30px;">Crear un blog</h1>
 
+    <form>
+        <div class="form-group">
+            <label for="titulo" style="color: #343a40; font-weight: bold;">Título:</label>
+            <input type="text" class="form-control" id="titulo">
+        </div>
+
+        <div class="form-group">
+            <label for="banner" style="color: #343a40; font-weight: bold;">Banner:</label>
+            <input type="file" id="banner" class="form-control" accept="image/*">
+            <img id="verBanner" src="#" alt="Vista previa de la imagen" class="mt-3" style="display: none;">
+        </div>
+
+        <div class="form-group">
+            <label for="cuerpo" class="form-label" style="color: #343a40; font-weight: bold;">Cuerpo del blog:</label>
+            <textarea class="form-control" id="myTextarea" style="height: 300px;"></textarea>
+        </div>
+
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary" style="border-color: #007bff;">Guardar</button>
+          <button type="button" class="btn btn-success" style="border-color: #6c757d;">Cancelar</button>
       </div>
-      
-      <div class="mb-3">
-        <label for="cuerpo" class="form-label">Cuerpo del blog:</label>
-        <textarea class="form-control" id="myTextarea"></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary m-3" id="btnGuardar">Guardar</button>
-      <button type="button" class="btn btn-secondary m-3" btn-cancelar>Cancelar</button>
+
     </form>
-  </div>
+</div>
 
 </body>
 

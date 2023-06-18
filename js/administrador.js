@@ -112,6 +112,8 @@ adminPost.addEventListener('click', (e) => {
    const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
    
    info.innerHTML = '';
+
+   
  
    if (blogs.length === 0) {
       const messageDiv = document.createElement('div');
@@ -119,9 +121,7 @@ adminPost.addEventListener('click', (e) => {
       info.appendChild(messageDiv);
    } else {
       const cardsHTML = blogs.map(blog => `
-      <div>
-      <a href="../apartados/CrearBlog.html" class="btn btn-primary btn-lg active m-3" role="button" aria-pressed="true">Nuevo Post</a>
-      </div>
+     
 
        <div class="col-md-4 mb-4">
          <div class="card text-center" style="max-width: 300px;">
@@ -136,6 +136,8 @@ adminPost.addEventListener('click', (e) => {
              <small class="text-muted">Fecha de publicación: ${blog.fecha}</small>
            </div>
          </div>
+         <button type="button" class="btn btn-primary m-3">Editar</button>
+         <button type="button" class="btn btn-danger m-3">Eliminar</button>
          
        </div>
      `).join('');
