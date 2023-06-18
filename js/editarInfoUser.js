@@ -37,7 +37,7 @@ const editar = () => {
     indica que el usuario no se encontró en la lista y se muestra un mensaje de alerta correspondiente. */
     if (usuarioIndex !== -1) {
       if (usuarios[usuarioIndex].password !== document.getElementById("contraseña").value) {
-        var passwd = prompt('Para confirmar los cambios, introduce tu contraseña antigua:');
+        let passwd = prompt('Para confirmar los cambios, introduce tu contraseña antigua:');
         if (passwd === usuarios[usuarioIndex].password) {
           usuarios[usuarioIndex] = {
             ...usuarios[usuarioIndex],
@@ -54,7 +54,7 @@ const editar = () => {
           alert('Contraseña incorrecta, los cambios no serán aplicados.');
         }
       }else {
-        var passwd = prompt('Para confirmar los cambios, introduce tu contraseña:');
+        let passwd = prompt('Para confirmar los cambios, introduce tu contraseña:');
         if (passwd === usuarios[usuarioIndex].password) {
           usuarios[usuarioIndex] = {
             ...usuarios[usuarioIndex],

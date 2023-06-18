@@ -53,7 +53,24 @@
     mostrarContrasenaCheckbox.addEventListener('change', function(e)
      {e.preventDefault();
       if (mostrarContrasenaCheckbox.checked) {
-    passwordInput.type = 'text';
+        const usuarios = JSON.parse(localStorage.getItem('users')) || [];
+        const userLogin = JSON.parse(localStorage.getItem('login_success')) || {};
+  
+        const usuarioIndex = usuarios.findIndex(
+            usuario =>
+            usuario.usuario === userLogin.usuario &&
+            usuario.email === userLogin.email &&
+            usuario.password === userLogin.password &&
+            usuario.name === userLogin.name
+        );
+        let passwd = prompt('Para continuar, primero debes verificar tu identidad. Introduce tu contraseña:');
+        if (passwd === usuarios[usuarioIndex].password) {
+            passwordInput.type = 'text';
+        }else {
+            alert('Contraseña incorrecta, por favor intentalo de nuevo.');
+            mostrarContrasenaCheckbox.checked = false;
+        }
+    
      } else {
     passwordInput.type = 'password';
   }
