@@ -59,12 +59,13 @@ if (infoBlogs.length != 0) {
             </div>
             <div class="input-group mt-3">
               <button type="button" class="btn btn-success" id="button-addon1" btnComentar>Comentar</button>
-              <input type="text" class="form-control" id="txtComentarios" placeholder="Escriube un comentario..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input type="text" class="form-control" id="txtComentarios" placeholder="Escribe un comentario..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+            <div div class="mb-4" id="comentarios">
+      
             </div>
       </div>
-      <div div class="mb-4 container-fluid" id="comentarios">
-      
-      </div>
+
       `;
       //Creando el evento click del boton de comentar
       const btnComentar = document.querySelector("[btnComentar]");
@@ -95,13 +96,23 @@ if (infoBlogs.length != 0) {
             const fechaComen = moment(j.fecha, "DD/MM/YYYY HH:mm:ss");
             const fecharelComentario = fechaComen.fromNow();
             cargarComentarios.innerHTML += `
-            <div class="card mt-3">
-              <div class="card-body">
-                <p class="card-text">${j.cuerpo}</p>
-                <p class="card-text"><small class="text-body-secondary">${fecharelComentario}</small></p>
+            <div class="border border-2 rounded mt-1 mb-3 bg-light">
+            <div class="fs-6 text-dark">${fecharelComentario}</div>
+            <div class="row">
+               <div class="col-auto">
+                  <i class="bi bi-person-circle text-dark fs-3 "></i>
+               </div>
+               <div class="col-auto d-flex align-items-center">
+               <div class="fs-6 text-dark fw-bold ">${j.user}</div>
+               </div>
+            </div>
+              <div class="row">
+                <div class="col-6">
+                  <span class="text-wrap fs-6 text-dark ms-5">${j.cuerpo}</span>
+                </div>
               </div>
             </div>
-            `;
+            `
           }
         }
         
