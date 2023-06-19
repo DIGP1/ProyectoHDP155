@@ -41,7 +41,7 @@ if (infoBlogs.length != 0) {
           </h6>
         </div>
         <div class="card-footer">
-          <a class="text-muted fs--1 stretched-link text-decoration-none">Autosdfsr</a>
+          <a class="text-muted fs--1 stretched-link text-decoration-none">Autor: ${i.autor}</a>
           <br>
           <a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Fecha de publicacion: ${fecharelativa}</a>
         </div>
@@ -63,6 +63,7 @@ if (infoBlogs.length != 0) {
                 <div class="card-body">
                   <h5 class="card-title">${i.titulo}</h5> 
                   <p class="card-text">${i.cuerpo}</p>
+                  <p class="card-text"><small class="text-body-secondary">Creado por: ${i.autor}</small></p>
                   <p class="card-text"><small class="text-body-secondary">${i.fecha}</small></p>
                 </div>
               </div>
