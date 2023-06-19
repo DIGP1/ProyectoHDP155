@@ -62,6 +62,7 @@ btnG.addEventListener("click", (e) => {
         tinymce.get('myTextarea').setContent("");
         document.getElementById("banner").value = "";
         document.getElementById("verBanner").src = "#";
+        window.location.href = '../apartados/admin.html' ;
     }
 
 });

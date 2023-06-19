@@ -38,7 +38,7 @@ const cargarFooterNav = () => {
                     </ul>
                     <form class="d-flex order-md-first order-lg-last" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
+                        <button class="btn btn-success" data-buscar type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -144,6 +144,11 @@ const cargarFooterNav = () => {
         acercaDe.classList.add('active')
         
         console.log(home.classList);
+    });
+
+    document.querySelector('[data-buscar]').addEventListener('submit', function(e){
+        e.preventDefault()
+        window.location.href = 'blogSeleccionado.html'
     });
 }
 
