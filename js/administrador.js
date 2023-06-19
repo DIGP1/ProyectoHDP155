@@ -237,8 +237,6 @@ adminPost.addEventListener('click', (e) => {
    
       const cardsHTML = blogs.map(blog => `
       
-    
-
        <div class="col-md-4 mb-4">
          <div class="card text-center" style="max-width: 300px;">
            <img src="${blog.banner}" class="card-img-top mx-auto img-fluid" alt="Imagen del blog" style="max-height: 150px;">
@@ -253,8 +251,8 @@ adminPost.addEventListener('click', (e) => {
            </div>
          </div>
          <div class"button-container">
-         <button type="button" class="btn btn-primary  m-3"  btn_editar >Editar</button >
-         <button type="button" class="btn btn-danger  m-3" button btn_eliminar>Eliminar</>
+         <button type="button" class="btn btn-primary  m-3"  btnEditar >Editar</button >
+         <button type="button" class="btn btn-danger  m-3"  btnEliminar>Eliminar</button>
          </div>
          
          
@@ -266,14 +264,98 @@ adminPost.addEventListener('click', (e) => {
      rowDiv.innerHTML = cardsHTML;
  
      info.appendChild(rowDiv);
-   }
-});
 
+     const btnEditar = document.querySelectorAll("[btnEditar]");
+     const btnEliminar = document.querySelectorAll("[btnEliminar]");
 
+     for (let i = 0; i < btnEditar.length; i++) {
+          btnEditar[i].addEventListener('click', () => {
+            info.innerHTML = `
+            <h1 style="color: #343a40; font-weight: bold; text-align: center; margin-bottom: 30px;">Editar Blog</h1>
 
+            <form id="myForm">
+              <div class="form-group">
+                <label for="titulo" style="color: #343a40; font-weight: bold;">Título:</label>
+                <input type="text" class="form-control" id="titulo">
+              </div>
 
+              <div class="form-group">
+                <label for="banner" style="color: #343a40; font-weight: bold;">Banner: (No seleccione ningun archivo para dejar la imagen anterior)</label>
+                <input type="file" id="banner" class="form-control" accept="image/*">
+                <img id="verBanner" src="#" alt="Vista previa de la imagen" class="mt-3" style="display:none" >
+              </div>
 
+              <div class="form-group">
+                <label for="cuerpo" class="form-label" style="color: #343a40; font-weight: bold;">Cuerpo del blog:</label>
+                <textarea class="form-control" id="myTextarea" style="height: 300px;"></textarea>
+              </div>
 
+              <div class="form-group text-center">
+                <button type="button" class="btn btn-primary validarBtnGuardar" style="border-color: #007bff;" id="btnGuardar">Guardar</button>
+                <button type="button" class="btn btn-success" style="border-color: #6c757d;" id="btn-cancelar">Cancelar</button>
+              </div>
+
+              <label id="mensaje" style="display: none;"></label>
+            `;
+            const titu = document.getElementById("titulo");
+            const banners = blogs[i].banner;
+            tinymce.init({
+              selector: '#myTextarea',
+              setup: function (editor) {
+                editor.on('init', function () {
+                  editor.setContent(blogs[i].cuerpo);
+                });
+              }
+            }).then(function (editor) {
+              var myEditor = editor;
+            });
+            //Cargo los elementos del localStorage a los inputs
+            titu.value = blogs[i].titulo;
+            const editor = tinymce.get('myTextarea');
+            //Para mostrar la imagen ingresada
+            let bannerSubido = document.getElementById('banner');
+            let direcbanner; 
+            bannerSubido.addEventListener('change', function(event) {
+              let banner = event.target.files[0]; 
+              direcbanner = banner;
+              let reader = new FileReader();
+      
+              reader.onload = function(e) {
+                let verBanner = document.getElementById('verBanner');
+                verBanner.src = e.target.result; 
+                direcbanner = e.target.result;
+                verBanner.style.display = 'block';
+                verBanner.style.width = "30%";
+                verBanner.style.height = "10rem";
+
+              }
+              reader.readAsDataURL(banner);
+            });
+
+            //Evento click de guardar
+            const btnGuardar = document.getElementById("btnGuardar");
+
+            btnGuardar.addEventListener("click",()=>{
+              blogs[i].titulo = titu.value;
+              if(direcbanner != ""){
+                blogs[i].banner = direcbanner;
+              }else{
+                blogs[i].banner = banners;
+              }
+              blogs[i].cuerpo = editor.getContent();
+              localStorage.setItem("blogs", JSON.stringify(blogs))
+            });
+          });
+          for (let i = 0; i < btnEliminar.length; i++) {
+            btnEliminar[i].addEventListener('click', () => {
+              const index = btnEliminar[i].dataset.index;
+              infoBlogs.splice(index, 1);
+              localStorage.setItem('blogs', JSON.stringify(infoBlogs));
+            });
+        }
+      }  
+  }
+});   
 
 
 
@@ -365,9 +447,3 @@ function ordenarPorFecha(arreglo){
    });
    return arreglo;
  }
-
-
-
-
-
-// export default adminUser;
