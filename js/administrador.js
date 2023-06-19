@@ -41,6 +41,12 @@ adminUser.addEventListener('click', (e) => {
          <th>Seleccionar</th>
          <th>Botones</th>
          <th><button data-agregar>Agregar Usuario</button></th>
+         <th>
+         <form class="d-flex order-md-first order-lg-last" role="search">
+         <input class="form-control me-2" type="search" placeholder="Ingresa un Usuario" aria-label="Search">
+         <button class="btn btn-success" data-buscar type="submit">Buscar</button>
+     </form>
+         </th>
        </tr>
      </thead>
      <tbody>
