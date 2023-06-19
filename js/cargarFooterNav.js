@@ -17,7 +17,8 @@ const cargarFooterNav = () => {
     const nav = `
     <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container-fluid d-flex colorPrincipal" pri>
-        <a class="navbar-brand fs-3 " href="../apartados/Blog.html">Conociendo El Salvador</a>
+        <img src="../img/catedral.png" alt="" style="width: 80px; height: 80px;">  <a class="navbar-brand fs-3 " href="../apartados/Blog.html">Conociendo El Salvador</a> </img>
+       
             
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
