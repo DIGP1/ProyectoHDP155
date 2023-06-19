@@ -344,11 +344,11 @@ adminPost.addEventListener('click', (e) => {
    
       const cardsHTML = blogs.map(blog => `
       
-       <div class="col-md-4 mb-4">
-         <div class="card text-center" style="max-width: 300px;">
+       <div class="col-auto mb-4">
+         <div class="card" style="max-width: 300px; ">
            <img src="${blog.banner}" class="card-img-top mx-auto img-fluid" alt="Imagen del blog" style="max-height: 150px;">
-           <div class="card-body">
-             <h5 class="card-title">${blog.titulo}</h5>
+           <div class="card-body ">
+             <h5 class="card-title fw-bold">${blog.titulo}</h5>
              <p class="card-text">${blog.cuerpo.substring(0, 200)}...</p>
            </div>
            <div class="card-footer">
@@ -444,10 +444,12 @@ adminPost.addEventListener('click', (e) => {
 
             btnGuardar.addEventListener("click",()=>{
               blogs[i].titulo = titu.value;
-              if(direcbanner != ""){
-                blogs[i].banner = direcbanner;
-              }else{
+              console.log(direcbanner)
+              if(direcbanner == null){
                 blogs[i].banner = banners;
+                
+              }else{
+                blogs[i].banner = direcbanner;
               }
               blogs[i].cuerpo = editor.getContent();
               localStorage.setItem("blogs", JSON.stringify(blogs))
