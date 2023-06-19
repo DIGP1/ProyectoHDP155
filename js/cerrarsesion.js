@@ -32,7 +32,7 @@
 const cerrarsesion = () => {
 
     
-    const logout = document.querySelector("#logout");
+    const logout = document.getElementById("logout");
   
     logout.addEventListener("click", () => {
       alert("¡Hasta pronto!");
