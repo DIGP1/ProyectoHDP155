@@ -40,7 +40,7 @@ adminUser.addEventListener('click', (e) => {
          <th>Password</th>
          <th>Seleccionar</th>
          <th>Botones</th>
-         <th><button>Agregar Usuario</button></th>
+         <th><button data-agregar>Agregar Usuario</button></th>
        </tr>
      </thead>
      <tbody>
@@ -67,7 +67,8 @@ adminUser.addEventListener('click', (e) => {
    info.innerHTML = '';
    info.appendChild(table);
 
-    assingUpdateEvent(users, info);
+  assingUpdateEvent(users, info);//Evento de editar usuario
+  assingAddEvent(users, info);//Evento de agregar nuevo usuario
  
    assignDeleteEvent(users); // Asignar eventos click a los botones de eliminar
  
@@ -85,6 +86,7 @@ adminUser.addEventListener('click', (e) => {
  });
 
  let formVisible = false;//Permite verificar si el formulario para editar es visible
+ const createP = document.createElement('p');//Permite asignar los estilos a los mensajes de error
  
  function assignDeleteEvent(users) {
 	formVisible = false;
@@ -106,12 +108,11 @@ adminUser.addEventListener('click', (e) => {
        const userId = button.getAttribute('data-id');
        let userEdit = users.filter((user) => user.id === userId); // Almacena el usuario que se va a editar
 	   if (!formVisible) {
-		mostrarFormulario(container);
-		formVisible = true;
-	   }
+		    mostrarFormulario(container);
+        formVisible = true;
+      }
 	   mostrarDatos(userEdit[0]);
 	   const btnGuardar = document.querySelector('[data-editar-btn]');
-	   console.log("Elemento del btn recibido: ", btnGuardar)
 
 	   btnGuardar.addEventListener("click", () => {
 		const usuarios = JSON.parse(localStorage.getItem('users')) || false;
@@ -121,7 +122,7 @@ adminUser.addEventListener('click', (e) => {
 			usuario.email === userEdit[0].email &&
 			usuario.password === userEdit[0].password &&
 			usuario.name === userEdit[0].name
-		);
+		)
 		console.log("Ususario a editar: ", usuarios[usuarioIndex])
 		/* La condición if (usuarioIndex !== -1) verifica si se encontró el usuario en la lista. Si el valor de usuarioIndex es 
 		diferente de -1, significa que se encontró el usuario y se procede a realizar la edición. Si el valor de usuarioIndex es -1, 
@@ -144,44 +145,137 @@ adminUser.addEventListener('click', (e) => {
    });
  }
 
+ function assingAddEvent(users, container){
+  const btnAgregar = document.querySelector("[data-agregar]");
+  btnAgregar.addEventListener("click", () => {
+    console.log("Valor del formulario: ", formVisible)
+    if (!formVisible) {
+      mostrarFormulario(container);
+      formVisible = true;
+    }else {
+      const divContainer = document.getElementsByClassName('container_');
+      container.removeChild(divContainer[0]);
+      mostrarFormulario(container);
+    }
+
+    const registro = document.getElementById("form-regi");
+    const errorUser = document.querySelector("[p-name]");
+    const errorEmail = document.querySelector('[p-email]')
+    const errorPassword = document.querySelector('[p-password]');
+    
+
+    registro.addEventListener("submit", (e) => {
+      e.preventDefault();
+    
+      const nombreIngresado = document.querySelector("[data-name]").value;
+      const usuarioIngresado = document.querySelector("[data-user]").value;
+      const emailIngresado = document.querySelector("[data-correo]").value;
+      const contraseniaIngresada = document.querySelector("[data-contra]").value;
+    
+      // Validar campos vacíos
+      if (nombreIngresado.trim() === '') {
+        displayError(errorUser, 'Por favor, ingresa un nombre.');
+        return;
+      }
+      if (emailIngresado.trim() === '') {
+        displayError(errorEmail, 'Por favor, ingresa un correo electrónico.');
+        return;
+      } else {
+        //Validación de correo a través de expresión regular
+        if (!validarEmail(emailIngresado)) {
+          displayError(errorEmail, 'Por favor, ingrese un correo válido');
+          return;
+        }
+      }
+      if (contraseniaIngresada.trim() === '') {
+        displayError(errorPassword, 'Por favor, ingresa una contraseña.');
+        return;
+      }
+    
+      const usuarios = JSON.parse(localStorage.getItem('users')) || [];
+      
+      // comprobar si existe repeticion
+      const nameRegistrared = usuarios.find(user => user.user === usuarioIngresado);
+      const emailRegistrared = usuarios.find(user => user.email === emailIngresado);
+    
+      // Validar contraseña
+      const minimoDeCaracteres = contraseniaIngresada.length >= 8;
+      const noTieneEspacios = !/\s/.test(contraseniaIngresada);
+      const tieneSimbolos = /^(?=.*[!@#$%^&*()\-_=+{};:,<.>])/.test(contraseniaIngresada);
+      
+      if (nameRegistrared) {
+        displayError(errorUser, 'El nombre de usuario ya está registrado.');
+        return;
+      } 
+      if (emailRegistrared) {
+        displayError(errorEmail, 'El correo ya está registrado.');
+        return;
+      }
+      if (!minimoDeCaracteres) {
+        displayError(errorPassword, 'La contraseña debe tener al menos 8 caracteres.');
+        return;
+      }
+      if (!noTieneEspacios) {
+        displayError(errorPassword, 'La contraseña no debe contener espacios.');
+        return;
+      }
+      if (!tieneSimbolos) {
+        displayError(errorPassword, 'La contraseña debe contener al menos un símbolo.');
+        return;
+      }
+      
+      usuarios.push({ id:uuid.v4(), name:nombreIngresado, user:usuarioIngresado, email:emailIngresado, password:contraseniaIngresada});
+      localStorage.setItem('users', JSON.stringify(usuarios));
+      alert('Usuario registrado con exito.');
+    
+    })
+  });
+ }
+
 function mostrarFormulario(container){
 	
 	const formEdit = document.createElement('form');
+  formEdit.setAttribute("id", "form-regi");
 	const divContainer = document.createElement('div');
-	formEdit.classList.add('container_');
-	formEdit.classList.add('mt-3');
-	formEdit.classList.add('mb-3');
+	divContainer.classList.add('container_');
+	divContainer.classList.add('mt-3');
+	divContainer.classList.add('mb-3');
 	divContainer.innerHTML = ``;
 	formEdit.innerHTML = `
-	<img src="" alt="">
-
 	<div class="input-field">
-		<label for="email">Nombre Completo</label> <input type="text" class="input" id="nombrecompleto" required >
-
+		<label for="email">Nombre Completo</label> <input type="text" class="input" id="nombrecompleto" required data-name>
 	</div>
-	
 	<div class="input-field">
-		
-		<label for="Usuario">Usuario</label><input type="text" class="input" id="usuarioo" required dt>
+		<label for="Usuario">Usuario</label><input type="text" class="input" id="usuarioo" required data-user>
 	</div>
-
 	<p p-name></p>
-
-	<div class="input-field">
-		
-		<label for="email">Correo</label><input type="text" class="input" id="correoelectronico" required >
+	<div class="input-field"> 
+		<label for="email">Correo</label><input type="text" class="input" id="correoelectronico" required data-correo>
 	</div>
+  <p p-email></p>
 	<div class="input-field p-2">
-		
-		<label for="email">Contraseña</label><input type="text" class="input" id="contraseña" required >
-		
+		<label for="email">Contraseña</label><input type="password" class="input" id="contraseña" required data-contra>
+    <label class="">Mostrar Contraseña <input class="p-3" type="checkbox" id="mostrarContrasenaCheckbox"></label>
 	</div>
+  <p p-password></p>
 	<div class="button-container">
-		<button type="button" class="btn btn-success" id="editarbtn" data-editar-btn>Guardar</button>
+    <input type="submit" class="submit btn btn-success" value="Guardar" id="editarbtn" data-editar-btn>
 	</div>`;
 	divContainer.innerHTML = ``;
 	divContainer.appendChild(formEdit);
 	container.appendChild(divContainer);
+
+  const passwordInput = document.getElementById("contraseña");
+  passwordInput.type = 'password';
+  const mostrarContrasenaCheckbox = document.getElementById('mostrarContrasenaCheckbox');
+  mostrarContrasenaCheckbox.addEventListener('change', function(e){
+    e.preventDefault();
+    if (mostrarContrasenaCheckbox.checked) {
+      passwordInput.type = 'text';
+    }else {
+      passwordInput.type = 'password';
+    }
+  });
 		
  }
 
@@ -205,7 +299,20 @@ function mostrarFormulario(container){
 
  }
 
+ function displayError(element, message) {
+	createP.style.color = 'red';
+	createP.style.fontSize = '11px';
+	createP.style.textAlign = 'center';
+	createP.innerHTML = message;
+	element.innerHTML = '';
+	element.appendChild(createP);
+}
 
+//Valida el correo
+const validarEmail = (email) => {
+	var expresionRegular = /^([a-zA-Z0-9._-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,6})$/;
+	return expresionRegular.test(email);
+};
 
 
 
