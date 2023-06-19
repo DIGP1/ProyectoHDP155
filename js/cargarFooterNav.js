@@ -51,7 +51,7 @@ const cargarFooterNav = () => {
                         <a id="data-pf" class="dropdown-item" href="${ruta}">${li}</a>
                     </li>
                     <li>
-                        <button class="dropdown-item" id="logout">Salir</button> 
+                        <button class="dropdown-item" id="logout"><a href="../apartados/InicioSesion.html" style="text-decoration:none; color:black">Salir</a></button> 
                     </li>
                 </ul>
             </div>

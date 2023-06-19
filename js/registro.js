@@ -26,6 +26,7 @@ registro.addEventListener('submit', (e) => {
 	const usuarioIngresado = document.querySelector("[data-user]").value;
 	const emailIngresado = document.querySelector("[data-correo]").value;
 	const contraseniaIngresada = document.querySelector("[data-contra]").value;
+	
 
 	// Validar campos vacíos
 	if (nombreIngresado.trim() === '') {
@@ -79,7 +80,7 @@ registro.addEventListener('submit', (e) => {
 		return;
 	}
 	
-	usuarios.push({ id:uuid.v4(), name:nombreIngresado, user:usuarioIngresado, email:emailIngresado, password:contraseniaIngresada});
+	usuarios.push({ id:uuid.v4(), name:nombreIngresado, user:usuarioIngresado, email:emailIngresado, password:contraseniaIngresada, silenciado:false});
 	localStorage.setItem('users', JSON.stringify(usuarios));
 	alert('Usuario registrado con exito.');
 
