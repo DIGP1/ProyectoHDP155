@@ -47,12 +47,14 @@ btnG.addEventListener("click", (e) => {
         mensaje.textContent = "";
         mensaje.style.display = "none";
         const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        const autor = JSON.parse(localStorage.getItem("login_success"));
         blogs.push({
             idBlog: uuid.v4(),
             titulo: titulo,
             cuerpo: cuerpo,
             banner: direcbanner,
-            fecha: fechaBlog
+            fecha: fechaBlog,
+            autor: autor.user
         });
         localStorage.setItem("blogs", JSON.stringify(blogs));
         alert("¡Se ha guardado el blog con éxito!");
