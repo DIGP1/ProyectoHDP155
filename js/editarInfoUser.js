@@ -9,9 +9,13 @@ const usuarioo = document.getElementById("usuarioo");
 const correo = document.getElementById("correoelectronico");
 const contra = document.getElementById("contraseña");
 
+nombre.style.color = "white";
 nombre.value = validarusuario.name;
+usuarioo.style.color = "white";
 usuarioo.value = validarusuario.user;
+correo.style.color = "white";
 correo.value = validarusuario.email;
+contra.style.color = "white";
 contra.value = validarusuario.password;
 
 const btnEditar = document.getElementById("editarbtn");
