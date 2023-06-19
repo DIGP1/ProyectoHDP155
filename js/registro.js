@@ -84,5 +84,5 @@ registro.addEventListener('submit', (e) => {
 	localStorage.setItem('users', JSON.stringify(usuarios));
 	alert('Usuario registrado con exito.');
 
-	window.location.href = 'InicioSesion.html';
+	window.location.href = 'Blog.html';
 });
