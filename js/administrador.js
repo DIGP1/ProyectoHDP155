@@ -52,7 +52,7 @@ adminUser.addEventListener('click', (e) => {
                <td>${user.name}</td>
                <td>${user.email}</td>
                <td>${user.password}</td>
-               <td><input type="checkbox" data-id="${user.id}"></td> 
+               <td><input type="checkbox" data-id="${user.id} "dt-check ></td> 
                <td>
                  <button class="btn-edit" data-id="${user.id}">Editar</button> 
                  <button class="btn-delete" data-id="${user.id}">Eliminar</button> 
@@ -66,6 +66,24 @@ adminUser.addEventListener('click', (e) => {
  
    info.innerHTML = '';
    info.appendChild(table);
+
+  const ch= document.querySelectorAll("[dt-check]");
+
+  for(let i=0; i<ch.length; i++ ){
+     
+    ch[i].checked= users[i].silenciado;
+
+    ch[i].addEventListener('change',()=>{
+       
+      users[i].silenciado= ch[i].checked;
+
+      localStorage.setItem('users',JSON.stringify(users))
+      
+    })
+    
+  }
+
+
 
   assingUpdateEvent(users, info);//Evento de editar usuario
   assingAddEvent(users, info);//Evento de agregar nuevo usuario
