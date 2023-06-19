@@ -62,27 +62,57 @@ const cargarFooterNav = () => {
     //insercion del codigo html al data donde ira el nav
     document.querySelector('[data-nav]').innerHTML = nav
     
-    //Codigo html del footer
-    const footer = `<div class="container d-flex justify-content-center py-3">
-                        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
-                            <i class="fab fa-youtube"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
-                            <i class="fab fa-instagram"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                        </div>
+    // //Codigo html del footer
+    // const footer = `<div class="container d-flex justify-content-center py-3">
+    //                     <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+    //                         <i class="fab fa-facebook-f"></i>
+    //                     </button>
+    //                     <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+    //                         <i class="fab fa-youtube"></i>
+    //                     </button>
+    //                     <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+    //                         <i class="fab fa-instagram"></i>
+    //                     </button>
+    //                     <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+    //                         <i class="fab fa-twitter"></i>
+    //                     </button>
+    //                     </div>
     
-                        <!-- Copyright -->
-                        <div class="text-center text-white p-2">
-                        © 2023 Copyright:
-                    </div>`
-    //insercion del codigo html al data donde ira el footer
+    //                     <!-- Copyright -->
+    //                     <div class="text-center text-white p-2">
+    //                     © 2023 Copyright:
+    //                 </div>`
+    // //insercion del codigo html al data donde ira el footer
+    // document.querySelector('[data-footer]').innerHTML = footer
+    const footer = `<div class="container d-flex justify-content-center py-3">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <a href="#" class="btn btn-primary btn-floating mx-2" style="background-color: #4267B2;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="btn btn-primary btn-floating mx-2" style="background-color: #FF0000;">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="btn btn-primary btn-floating mx-2" style="background-color: #C13584;">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="btn btn-primary btn-floating mx-2" style="background-color: #1DA1F2;">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/" target="_blank" class="btn btn-primary btn-floating mx-2" style="background-color: #333;">
+            <i class="fab fa-github"></i>
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid bg-dark text-white text-center py-3">
+    <div class="row">
+        <div class="col">
+        © 2023 Conociendo El Salvador. Todos los derechos reservados.
+        </div>
+    </div>
+    </footer>`
     document.querySelector('[data-footer]').innerHTML = footer
 
     //Creacion de enventos click para generar animaciones en el nav
